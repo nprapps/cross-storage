@@ -4,7 +4,7 @@ Cross domain local storage, with permissions. Enables multiple browser
 windows/tabs, across a variety of domains, to share a single localStorage.
 Features an API using ES6 promises.
 
-*The NPR Visuals fork of `cross-storage` removes value serialization and leaves it up to the implementer. This allows `cross-storage` to be integrated with existing localStorage implementations that do not use cross-storage's serialization format. We are currently checking to see if some version of this idea can be merged into the [mainline cross-storage library](https://github.com/zendesk/cross-storage/issues/21).*
+*The NPR Visuals fork of `cross-storage` removes value serialization and leaves it up to the implementer. This allows `cross-storage` to be integrated with existing localStorage implementations that do not use cross-storage's serialization format. We are currently checking to see if some version of this idea can be merged into the [mainline cross-storage library](https://github.com/zendesk/cross-storage/issues/21). If you are dealing with similar issues, please comment on that issue thread or let us know.*
 
 [![Build Status](https://travis-ci.org/nprapps/cross-storage.svg?branch=master)](https://travis-ci.org/nprapps/cross-storage)
 
