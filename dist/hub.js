@@ -155,19 +155,7 @@
    * @param {object} params An object with key, value and optional ttl
    */
   CrossStorageHub._set = function(params) {
-    var ttl, item;
-
-    ttl = params.ttl;
-    if (ttl && parseInt(ttl, 10) !== ttl) {
-      throw new Error('ttl must be a number');
-    }
-
-    item = {value:  params.value};
-    if (ttl) {
-      item.expire = CrossStorageHub._now() + ttl;
-    }
-
-    window.localStorage.setItem(params.key, JSON.stringify(item));
+    window.localStorage.setItem(params.key, params.value);
   };
 
   /**
@@ -187,15 +175,12 @@
 
     for (i = 0; i < params.keys.length; i++) {
       key = params.keys[i];
-      item = JSON.parse(storage.getItem(key));
+      item = storage.getItem(key);
 
       if (item === null) {
         result.push(null);
-      } else if (item.expire && item.expire < CrossStorageHub._now()) {
-        storage.removeItem(key);
-        result.push(null);
       } else {
-        result.push(item.value);
+        result.push(item);
       }
     }
 
