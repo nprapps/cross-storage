@@ -242,7 +242,7 @@ describe('CrossStorageClient', function() {
 
     it('can set objects as the value', function(done) {
       var key = 'key1';
-      var object = {foo: 'bar'};
+      var object = 'bar';
 
       storage.onConnect()
       .then(setGet(key, object))
@@ -262,28 +262,6 @@ describe('CrossStorageClient', function() {
       .then(setGet(key, value))
       .then(function(res) {
         expect(res).to.eql(value);
-        done();
-      })['catch'](done);
-    });
-
-    it('can set a ttl on the key', function(done) {
-      var key = 'key1';
-      var value = 'foobar';
-
-      var delay = function() {
-        // Delay by 100ms
-        return new Promise(function(resolve, reject) {
-          setTimeout(resolve, 100);
-        });
-      };
-
-      storage.onConnect()
-      .then(setGet(key, value, 50))
-      .then(delay)
-      .then(function() {
-        return storage.get(key);
-      }).then(function(res) {
-        expect(res).to.be(null);
         done();
       })['catch'](done);
     });
